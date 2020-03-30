@@ -12,30 +12,37 @@ $fields = array(
 $meta = array();
 foreach($fields as $key=>$value){
     if (!empty($data['meta'][$key])){
-        $meta[] = '<div class="columns__label"></div>'.$value.'<div class="columns__value"></div>';
+        $meta[] = '<div class="columns__row"><div class="columns__label">'.$value.'</div><div class="columns__value">'.$data['meta'][$key].'</div></div>';
+     }
+
+}
+$meta = implode("\n", $meta);
+$socials = array();
+foreach($fields as $key=>$value){
+    if (!empty($data['meta'][$key])){
+        $socials[] = '<a class="social"><div class="columns__label">'.$value.'</div><div class="columns__value">'.$data['meta'][$key].'</a>';
     }
 
 }
+$socials = implode("\n", $socials);
 ?>
 
 <div class="bio">
     <div class="bio__photo">
-        <?php echo $data['photo'];?>
-        <img src="assets/images/photo.ipg" alt="" class="bio__image">
+        <?php echo $data['image'];?>
+
     </div>
-    <div class="bio__discription"><?php echo $data[''];?></div>
+    <div class="bio__discription"><?php echo $data['bio'];?></div>
     <div class="bio__info">
-        <?php echo $data[''];?>
+        <?php echo $data['colu'];?>
         <div class="columns">
-            <div class="columns__column">
-                <div class="columns__label"></div>
-            </div>
-            <div class="columns__column">
-                <div class="columns__value"></div>
+            <?php echo $meta;?>
             </div>
         </div>
     </div>
-    <div class="bio__socials"></div>
+    <div class="bio__socials">
+        <?php echo $socials;?>;
+    </div>
 </div>
 
 
