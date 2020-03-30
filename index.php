@@ -1,4 +1,5 @@
 <?php
+echo 'hello';
 include 'function.php';
 include 'templates/header.php';
 include 'templates/bio.php';
