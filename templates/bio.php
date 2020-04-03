@@ -9,6 +9,11 @@ $fields = array(
     'email'=>'Email',
     'site'=>'Сайт'
 );
+$fieldsoc = array(
+    'vk_link',
+    'vk_image',
+    'fb_link'
+);
 $meta = array();
 foreach($fields as $key=>$value){
     if (!empty($data['meta'][$key])){
@@ -18,9 +23,9 @@ foreach($fields as $key=>$value){
 }
 $meta = implode("\n", $meta);
 $socials = array();
-foreach($fields as $key=>$value){
+foreach($fieldsoc as $key){
     if (!empty($data['meta'][$key])){
-        $socials[] = '<a class="social"><div class="columns__label">'.$value.'</div><div class="columns__value">'.$data['meta'][$key].'</a>';
+        $socials[] = '<a class="social"><div class="columns__label">'.$key.'</div><div class="columns__value">'.$data['meta'][$key].'</a>';
     }
 
 }
