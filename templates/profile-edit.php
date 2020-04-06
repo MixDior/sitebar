@@ -1,16 +1,16 @@
+<?php
+$fields=fields_profile();
+$out=array();
+foreach ($fields as $key=>$field){
+    $value=!empty($field['value'])?$field['value']:'';
+    $out[]= '<div class="form__group"><label for="'.$key.'" class="form__label">'.$field['label'].'
+        </label><input id="'.$key.'" type="'.$field['type'].'" class="'.$field['class'].'" name="'.$key.'" value="'.$value.'"></div>';
+}
+$out=implode("\n",$out);
+?>
+
 <form action="" class="form js-form-profile">
-    <div class="form__group"><label for="" class="form__label">ФИО
-        </label><input type="text" class="form__control" name="fio" value=""></div>
-    <div class="form__group"><label for="" class="form__label">Биография
-        </label><input type="text" class="form__control" name="bio" value=""></div>
-    <div class="form__group"><label for="" class="form__label">ДР
-        </label><input type="datetime-local" class="form__control" name="birthday" value=""></div>
-    <div class="form__group"><label for="" class="form__label">Email
-        </label><input type="text" class="form__control" name="email" value=""></div>
-    <div class="form__group"><label for="" class="form__label">Телефон
-        </label><input type="text" class="form__control" name="phone" value=""></div>
-    <div class="form__group"><label for="" class="form__label">Ссылка VK
-        </label><input type="text" class="form__control" name="meta[vk_link]" value=""></div>
+    <?php echo $out; ?>
     <button class="form_button">ОК</button>
-    <input type="hidden" action="update_profile">
+    <input type="hidden" name="action" value="update_profile">
 </form>

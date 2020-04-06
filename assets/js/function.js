@@ -240,7 +240,7 @@
         // отправка запроса
         ajax( {
             method : 'GET',
-            url : 'index.php',
+            url : 'includes/ajax.php',
             headers : {
                 'Access-Control-Allow-Origin' : '*',
             },
