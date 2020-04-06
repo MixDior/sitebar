@@ -25,7 +25,7 @@ $meta = implode("\n", $meta);
 $socials = array();
 foreach($fieldsoc as $key){
     if (!empty($data['meta'][$key])){
-        $socials[] = '<a class="social"><div class="columns__label">'.$key.'</div><div class="columns__value">'.$data['meta'][$key].'</a>';
+        $socials[] = '<a class="social__link">'.$key.'<div class="columns__value">'.$data['meta'][$key].'</a>';
     }
 
 }
@@ -37,7 +37,7 @@ $socials = implode("\n", $socials);
         <?php echo $data['image'];?>
 
     </div>
-    <div class="bio__discription"><?php echo $data['bio'];?></div>
+    <div class="bio__description"><?php echo $data['bio'];?></div>
     <div class="bio__info">
         <?php echo $data['colu'];?>
         <div class="columns">
@@ -46,7 +46,7 @@ $socials = implode("\n", $socials);
         </div>
     </div>
     <div class="bio__socials">
-        <?php echo $socials;?>;
+        <div class="social"><?php echo $socials;?></div>;
     </div>
 </div>
 

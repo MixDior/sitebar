@@ -18,3 +18,28 @@ function get_user(){
     );
     return $data;
 }
+
+function get_resume(){
+    $fields = array(
+        array(
+            'start'=>'2015-03-01',
+            'end'=>'2015-12-01',
+            'position'=>'Mehanik',
+            'location'=>'Sizran',
+            'description'=>'Работал в автосервисе'),
+        array(
+            'start'=>'2016-12-01',
+            'end'=>'2016-03-01',
+            'position'=>'Mehanik-электрик',
+            'location'=>'Саратов',
+            'description'=>'Выкручивал'),
+        array(
+            'start'=>'2016-04-01',
+            'end'=>'0000-00-00',
+            'position'=>'Mehanik',
+            'location'=>'Москва',
+            'description'=>'Ничего не делал'),
+    );
+    return $fields;
+}
+
