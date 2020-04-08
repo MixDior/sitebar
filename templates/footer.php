@@ -1,3 +1,3 @@
-<script src="assets/js/function.js"></script>
+<script src="assets/js/func2.js"></script>
 </body>
 </html>

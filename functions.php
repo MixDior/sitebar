@@ -2,12 +2,32 @@
 /**  */
 function fields_profile(){
     $fields=array(
-        'fio'=>array('label'=>'ФИО','type'=>'text','class'=>'form__control',),
-        'bio'=>array('label'=>'Биография','type'=>'text','class'=>'form__control',),
-        'birthday'=>array('label'=>'ДР','type'=>'datetime-local','class'=>'form__control',),
-        'email'=>array('label'=>'Email','type'=>'text','class'=>'form__control',),
-        'phone'=>array('label'=>'Телефон','type'=>'text','class'=>'form__control',),
-        'meta[vk_link]'=>array('label'=>'Ссылка VK','type'=>'text','class'=>'form__control',),
+        'fio'=>array(
+            'label'=>'ФИО',
+            'type'=>'text',
+            'class'=>'form__control',
+            'required'=>1,),
+        'bio'=>array(
+            'label'=>'Биография',
+            'type'=>'text',
+            'class'=>'form__control',),
+        'birthday'=>array(
+            'label'=>'ДР',
+            'type'=>'datetime-local',
+            'class'=>'form__control',),
+        'email'=>array(
+            'label'=>'Email',
+            'type'=>'text',
+            'class'=>'form__control',
+            'required'=>1,),
+        'phone'=>array(
+            'label'=>'Телефон',
+            'type'=>'text',
+            'class'=>'form__control',),
+        'meta[vk_link]'=>array(
+            'label'=>'Ссылка VK',
+            'type'=>'text',
+            'class'=>'form__control',),
     );
     return $fields;
 }

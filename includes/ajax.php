@@ -1,13 +1,15 @@
 <?php
 
-function send_json_succes($data){
+include '../functions.php';
+
+function send_json_success($data){
     $data=json_encode(array(
         'success'=>true,
         'data'=>$data,
     ));
 }
 
-function send_json_error($data){
+function send_json_error($data=null){
     $data=json_encode(array(
         'success'=>false,
         'data'=>$data,
@@ -20,15 +22,17 @@ function send_json_error($data){
 function update_profile(){
     if(!empty($_REQUEST)){
         $data=$_REQUEST;
-        $important = array('fio'=>'ФИО','email'=>'Email',);
+        $fields = fields_profile();
         $error=array();
-        foreach ($important as $key=>$value) {
-            if(empty($data[$key])){
-                $error[]='Поле '.$value.' должно быть заполнено!';
+        foreach ($fields as $key=>$value) {
+            if(!empty($value['required'])&&empty($data[$key])){
+                $error[]='Поле "'.$value['label'].'" должно быть заполнено!';
             }
         }
         if(!empty($error)){
             send_json_error($error);
+        }else{
+            send_json_succes ($data);
         }
 
     }
