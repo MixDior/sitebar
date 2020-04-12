@@ -1,5 +1,8 @@
 <?php
-include 'functions.php';
+global $link;
+require 'config.php';
+require 'db.php';
+require 'functions.php';
 include 'templates/header.php';
 include 'templates/profile-edit.php';
 include 'templates/bio.php';

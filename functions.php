@@ -1,31 +1,53 @@
 <?php
 /**  */
+global $link;
+function do_query($query){
+    global $link;
+    $result=mysqli_query($link,$query);
+
+    if($error=mysqli_error($link)){
+        print_r($error);
+    }
+    return $result;
+}
+
+/**perform  - ключ, который показывает на то, какой тип данных у данной переменной, чтобы правильно сохранить их в БД, варианты
+ * d - целое число;
+ * f - числа с точкой;
+ * s - все остальное;
+ */
 function fields_profile(){
     $fields=array(
         'fio'=>array(
             'label'=>'ФИО',
+            'perform'=>'s',
             'type'=>'text',
             'class'=>'form__control',
             'required'=>1,),
         'bio'=>array(
             'label'=>'Биография',
+            'perform'=>'s',
             'type'=>'text',
             'class'=>'form__control',),
         'birthday'=>array(
             'label'=>'ДР',
+            'perform'=>'s',
             'type'=>'datetime-local',
             'class'=>'form__control',),
         'email'=>array(
             'label'=>'Email',
+            'perform'=>'s',
             'type'=>'text',
             'class'=>'form__control',
             'required'=>1,),
         'phone'=>array(
             'label'=>'Телефон',
+            'perform'=>'s',
             'type'=>'text',
             'class'=>'form__control',),
-        'meta[vk_link]'=>array(
+        'usermeta[vk_link]'=>array(
             'label'=>'Ссылка VK',
+            'perform'=>'s',
             'type'=>'text',
             'class'=>'form__control',),
     );
@@ -35,6 +57,7 @@ function fields_profile(){
 function get_user(){
 
     $data = array(
+        'fio'=>'Иванов Иван Иванович',
         'image'=>'<img src="assets/images/photo.bmp" alt="" class="bio__image">',
         'bio'=>'Затем я удалил ый свет, но не',
         'meta'=>array(
