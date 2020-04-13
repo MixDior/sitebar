@@ -33,6 +33,7 @@ function send_json_error( $data = null ) {
 function update_profile() {
     if ( ! empty( $_REQUEST ) && is_admin() ) {
         $data = $_REQUEST;
+
         $fields  = fields_profile();
         $error   = array();
         $insert  = array();

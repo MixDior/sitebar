@@ -352,7 +352,7 @@
         // отправка запроса
         ajax( {
             method : 'GET',
-            url : 'includes/ajax.php',
+            url : 'includes/ajax2.php',
             headers : {
                 'Access-Control-Allow-Origin' : '*',
             },

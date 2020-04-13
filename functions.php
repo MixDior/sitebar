@@ -1,15 +1,44 @@
 <?php
 /**  */
 global $link;
-function do_query($query){
-    global $link;
-    $result=mysqli_query($link,$query);
 
-    if($error=mysqli_error($link)){
-        print_r($error);
+define('SECRET','twretqrwetrqweytrqytre');
+/**Функция для определения пароля
+ * Если для нескольких пользователей, то переносим в БД. В БД храним именно ХЭШ 'md5($password.SECRET)'
+ */
+function is_admin(){
+    $password='123';
+    $hash=md5($password.SECRET);
+
+    if((!empty($_REQUEST['pass']) && md5($_REQUEST['pass'].SECRET)==$hash)||(!empty($_COOKIE['hash'])) && $_COOKIE['hash']=$hash){
+
+        setcookie('hash',md5($_REQUEST['pass']),time()+3600,'/');
+        return true;
     }
+    return false;
+
+}
+
+
+//Функция печати данных на экран
+function pr( $data ) {
+    echo '<pre>';
+    print_r( $data );
+    echo '</pre>';
+}
+
+function do_query( $query ) {
+    global $link;
+    $result = mysqli_query( $link, $query );
+
+
+    if ( $error = mysqli_error( $link ) ) {
+        return $error;
+    }
+
     return $result;
 }
+
 
 /**perform  - ключ, который показывает на то, какой тип данных у данной переменной, чтобы правильно сохранить их в БД, варианты
  * d - целое число;
@@ -17,6 +46,9 @@ function do_query($query){
  * s - все остальное;
  */
 function fields_profile(){
+    $values=get_last_user_data();
+    $values=array_merge($values, get_user_meta());
+
     $fields=array(
         'fio'=>array(
             'label'=>'ФИО',
@@ -32,7 +64,7 @@ function fields_profile(){
         'birthday'=>array(
             'label'=>'ДР',
             'perform'=>'s',
-            'type'=>'datetime-local',
+            'type'=>'datetime',
             'class'=>'form__control',),
         'email'=>array(
             'label'=>'Email',
@@ -51,6 +83,14 @@ function fields_profile(){
             'type'=>'text',
             'class'=>'form__control',),
     );
+    foreach ($values as $key=>$value){
+        if(!empty($fields[$key])){
+            $fields[$key]['value']=$value;
+        }
+    }
+    if (empty($fields['birthday'])||'0000-00-00'==$fields['birthday']['value']){
+        $fields['birthday']['value']=date('Y-m-d');
+    }
     return $fields;
 }
 
@@ -97,4 +137,37 @@ function get_resume(){
     );
     return $fields;
 }
+
+
+/**
+ * Получение последней редакции данных пользователя
+ *
+ * @return array
+ */
+function get_last_user_data() {
+    $query  = 'SELECT * FROM `users` ORDER BY id DESC LIMIT 1';
+    $result = do_query( $query );
+    $result = $result->fetch_assoc();
+
+    if ( empty( $result ) ) {
+        $result = array();
+    }
+
+    return $result;
+}
+
+function get_user_meta(){
+    $query  = 'SELECT * FROM `usermeta`';
+    $result = do_query( $query );
+    $response=array();
+    while ($row=$result->fetch_assoc()){
+        if (!empty($row)){
+            $key='usermeta['.$row['key'].']';
+            $response[]=$row['value'];
+        }
+    }
+
+    return $response;
+}
+
 
