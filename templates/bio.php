@@ -2,57 +2,62 @@
 $data = fields_profile();
 
 $meta = array();
-$bio=array();
-foreach($data as $key=>$value){
-    if (false!==strpos($key,'usermeta')){
-       if(!empty($value['value'])) {
-           $meta[] = '<div class="columns__row"><div class="columns__label">' . $value['label'] . '</div><div class="columns__value">' . $value['value'] . '</div></div>';
-       }
-    }else{
-        if(!empty($value['value'])) {
-        switch($key) {
-            case 'fio':
-                $bio[] = '<h1>' . $value['value'] . '</h1>';
-                break;
-            case 'bio':
-                $bio[] = '<p>' . $value['value'] . '</p>';
-                break;
-            default:
-                switch($key){
-                    case 'birthday':$value['value']=date('d.m.Y', strtotime($value['value']));break;
-                            case 'email':
-                                if (false!==strpos($value['value'],'@')){
-                                    $value['value']='<a href="mailto:'.$value['value'].'">'.$value['value'].'</a>';
-                            }break;
-
-
-                }
+$bio  = array();
+foreach ( $data as $key => $value ) {
+    if ( 'action' != $key ) {
+        if ( false !== strpos( $key, 'usermeta' ) ) {
+            if ( ! empty( $value['value'] ) ) {
                 $meta[] = '<div class="columns__row"><div class="columns__label">' . $value['label'] . '</div><div class="columns__value">' . $value['value'] . '</div></div>';
-        }
+            }
+        } else {
+            if ( ! empty( $value['value'] ) ) {
+                switch ( $key ) {
+                    case 'fio':
+                        $bio[] = '<h1>' . $value['value'] . '</h1>';
+                        break;
+                    case 'bio':
+                        $bio[] = '<p>' . $value['value'] . '</p>';
+                        break;
+                    default:
+                        switch ( $key ) {
+                            case 'birthday':
+                                $value['value'] = date( 'd.m.Y', strtotime( $value['value'] ) );
+                                break;
+                            case 'email':
+                                if ( false !== strpos( $value['value'], '@' ) ) {
+                                    $value['value'] = '<a href="mailto:' . $value['value'] . '">' .
+                                        $value['value'] . '</a>';
+                                }
+
+                                break;
+                        }
+
+                        $html = '';
+                        $html .= '<div class="columns__row">';
+                        if ( ! empty( $value['label'] ) ) {
+                            $html .= '<div class="columns__label">' . $value['label'] . '</div>';
+                        }
+                        $html   .= '<div class="columns__value">'
+                            . $value['value']
+                            . '</div></div>';
+                        $meta[] = $html;
+                }
+            }
         }
     }
-   /* if (!empty($data['meta'][$key])){
-        $meta[] = '<div class="columns__row"><div class="columns__label">'.$value.'</div><div class="columns__value">'.$data['meta'][$key].'</div></div>';
-     }*/
-
 }
-$meta = implode("\n", $meta);
-$bio = implode("\n", $bio);
-
+$meta = implode( "\n", $meta );
+$bio  = implode( "\n", $bio );
 
 ?>
-
 <div class="bio">
     <div class="bio__photo">
-        <?php //echo $data['image'];?>
+        <?php //echo $data['image']; ?>
     </div>
-    <div class="bio__description"><?php echo $bio;?></div>
+    <div class="bio__description"><?php echo $bio; ?></div>
     <div class="bio__info">
-       <?php //echo $data['fio'];?>
         <div class="columns">
-            <?php echo $meta;?>
+            <?php echo $meta; ?>
         </div>
     </div>
 </div>
-
-

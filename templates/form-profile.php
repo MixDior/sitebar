@@ -1,8 +1,7 @@
 
-    <form action="" class="form js-form-profile">
+    <form action="" class="form js-form-submit">
         <?php echo $out; ?>
-        <button class="form__button">OK</button>
-        <input type="hidden" name="action" value="update_profile">
+        <button class="form__submit">OK</button>
         <div class="form__info js-form__info"></div>
     </form>
 

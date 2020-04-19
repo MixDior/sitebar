@@ -37,3 +37,22 @@ $resume = implode( "\n", $resume_rows );
 <div class="resume">
     <?php echo $resume; ?>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

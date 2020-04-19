@@ -94,7 +94,7 @@ text-align: right;
   display: table;
   width: 100%;
   line-height: 1;
-  background-color: #000;
+  background-color: #d268689c;
   &__item{
     display: table-cell;
     vertical-align: middle;
@@ -108,4 +108,49 @@ text-align: right;
     text-decoration: none;
     text-transform: uppercase;
   }
+}
+
+.button{
+  font-size: 1em;
+  border: 1px solid transparent;
+  background: transparent;
+  padding: 5px;
+  text-align: center;
+  vertical-align: middle;
+  color: #ccc;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+
+.form{
+  width: 100%;
+  max-width: 300px;
+  margin: auto auto 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  &__group{
+    clear: both;
+    margin-bottom: 10px;
+
+  }
+  &__label{}
+  &__control:extend(.button){
+    background-color: #fff;
+    border-color: #ccc;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+
+
+  }
+  &__button:extend(.button){
+    background-color: #fff;
+
+  }
+  &__submit:extend(.button){
+    background-color: #000;
+    color: #eee;
+}
 }

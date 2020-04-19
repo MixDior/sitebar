@@ -81,7 +81,7 @@ body {
   display: table;
   width: 100%;
   line-height: 1;
-  background-color: #000;
+  background-color: #d268689c;
 }
 .menu__item {
   display: table-cell;
@@ -94,5 +94,45 @@ body {
   color: #ccc;
   text-decoration: none;
   text-transform: uppercase;
+}
+.button,
+.form__control,
+.form__button,
+.form__submit {
+  font-size: 1em;
+  border: 1px solid transparent;
+  background: transparent;
+  padding: 5px;
+  text-align: center;
+  vertical-align: middle;
+  color: #ccc;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+.form {
+  width: 100%;
+  max-width: 300px;
+  margin: auto auto 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+.form__group {
+  clear: both;
+  margin-bottom: 10px;
+}
+.form__control {
+  background-color: #fff;
+  border-color: #ccc;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+}
+.form__button {
+  background-color: #fff;
+}
+.form__submit {
+  background-color: #000;
+  color: #eee;
 }
 /*# sourceMappingURL=style.css.map */
