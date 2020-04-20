@@ -4,6 +4,13 @@ body {
   background-color: #eee;
   color: #333;
 }
+.container {
+  padding: 0 20px;
+  width: 100%;
+  max-width: 380px;
+  margin: auto;
+  box-sizing: border-box;
+}
 .bio {
   padding: 10px;
 }
@@ -59,46 +66,13 @@ body {
   border: 3px solid;
   border-radius: 5px;
 }
-.resume {
-  padding-bottom: 10px;
-}
-.resume__row {
-  padding-bottom: 10px;
-}
-.resume__row:before,
-.resume__row:after {
-  display: block;
-  content: '';
-  clear: both;
-}
-.resume__period {
-  font-weight: bold;
-}
-.menu {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: table;
-  width: 100%;
-  line-height: 1;
-  background-color: #d268689c;
-}
-.menu__item {
-  display: table-cell;
-  vertical-align: middle;
-}
-.menu__link {
-  display: block;
-  padding: 10px;
-  text-align: center;
-  color: #ccc;
-  text-decoration: none;
-  text-transform: uppercase;
-}
 .button,
+.resume__remove,
+.resume__edit,
 .form__control,
 .form__button,
 .form__submit {
+  cursor: pointer;
   font-size: 1em;
   border: 1px solid transparent;
   background: transparent;
@@ -110,9 +84,93 @@ body {
   display: inline-block;
   border-radius: 4px;
 }
-.form {
+.resume {
+  padding-bottom: 10px;
+}
+.resume__row {
+  padding-bottom: 10px;
+  position: relative;
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.resume__row:before,
+.resume__row:after {
+  display: block;
+  content: '';
+  clear: both;
+}
+.resume__period {
+  font-weight: 300;
+  font-size: 14px;
+}
+.resume__position {
+  font-weight: bold;
+}
+.resume__location {
+  color: #ccc;
+}
+.resume__remove,
+.resume__edit {
+  position: absolute;
+  right: 0;
+  display: block;
+  padding: 10px;
+  text-align: center;
+  font-size: 2em;
+  opacity: 0.3;
+  color: black;
+  line-height: 1;
+}
+.resume__remove:hover,
+.resume__edit:hover,
+.resume__remove:focus,
+.resume__edit:focus,
+.resume__remove:active,
+.resume__edit:active {
+  opacity: 1;
+}
+.resume__remove {
+  top: 0;
+}
+.resume__edit {
+  bottom: 0;
+}
+.menu {
+  background-color: #d268689c;
+}
+.menu__burger {
+  padding: 15px;
+  color: #fff;
+  display: inline-block;
+  text-decoration: none;
+}
+.menu__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: block;
   width: 100%;
-  max-width: 300px;
+  line-height: 1;
+  display: none;
+}
+.menu__burger:focus + .menu__list {
+  display: block;
+}
+.menu__item {
+  display: block;
+}
+.menu__link {
+  display: block;
+  padding: 10px;
+  text-align: left;
+  color: #ccc;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.form {
   margin: auto auto 20px auto;
   padding: 20px;
   border: 1px solid #ccc;
@@ -122,6 +180,7 @@ body {
   margin-bottom: 10px;
 }
 .form__control {
+  cursor: text;
   background-color: #fff;
   border-color: #ccc;
   width: 100%;

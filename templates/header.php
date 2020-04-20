@@ -9,10 +9,14 @@
     <link rel="stylesheet" href="assets/styles/style.css">
 </head>
 <body>
-<ul class="menu">
+<div class="menu">
+    <a href="javascript:" class="menu__burger">E</a>
+<ul class="menu__list">
     <li class="menu__item"><a href="?form=profile" class="menu__link">Главная</a></li>
     <li class="menu__item"><a href="?form=resume" class="menu__link">Резюме</a></li>
     <li class="menu__item"><a href="#opt" class="menu__link">Опыт</a></li>
 </ul>
+</div>
 
+<div class="container">
 <?php echo get_form(); ?>

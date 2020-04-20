@@ -5,6 +5,14 @@ body{
   color: #333;
 }
 
+.container{
+  padding: 0 20px;
+  width:100%;
+  max-width: 380px;
+  margin: auto;
+  box-sizing: border-box;
+}
+
 .bio {
   padding: 10px;
   &__photo{}
@@ -68,49 +76,8 @@ text-align: right;
     border-radius: 5px;
   }
 }
-
-.resume{
-  padding-bottom: 10px;
-  &__row{
-    padding-bottom: 10px;
-    &:before,&:after {
-      display: block;
-      content: '';
-      clear: both;
-    }
-  }
-  &__period{
-  font-weight: bold;
-  }
-  &__position{}
-  &__location{}
-
-}
-
-.menu{
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: table;
-  width: 100%;
-  line-height: 1;
-  background-color: #d268689c;
-  &__item{
-    display: table-cell;
-    vertical-align: middle;
-
-  }
-  &__link{
-    display: block;
-    padding: 10px;
-    text-align: center;
-    color: #ccc;
-    text-decoration: none;
-    text-transform: uppercase;
-  }
-}
-
 .button{
+  cursor: pointer;
   font-size: 1em;
   border: 1px solid transparent;
   background: transparent;
@@ -122,11 +89,101 @@ text-align: right;
   display: inline-block;
   border-radius: 4px;
 }
+.resume{
+  padding-bottom: 10px;
+  &__row{
+    padding-bottom: 10px;
+    position: relative;
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,.1);
+    &:before,&:after {
+      display: block;
+      content: '';
+      clear: both;
+    }
+  }
+  &__period{
+    font-weight: 300;
+    font-size: 14px;
+  }
+  &__position{
+    font-weight: bold;
+  }
+  &__location{
+    color: #ccc;
+  }
+
+  &__remove:extend(.button),  &__edit:extend(.button) {
+    position: absolute;
+
+    right: 0;
+    display: block;
+    padding: 10px;
+    text-align: center;
+    font-size: 2em;
+    opacity: .3;
+    color: black;
+    line-height: 1;
+
+    &:hover,&:focus,&:active{
+      opacity: 1;
+    }
+
+  }
+  &__remove{
+top: 0;
+  }
+  &__edit{
+    bottom:0;
+
+  }
+
+}
+
+.menu{
+  background-color: #d268689c;
+  &__burger{
+    padding: 15px;
+    color: #fff;
+    display: inline-block;
+    text-decoration: none;
+
+  }
+
+  &__list{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: block;
+    width: 100%;
+    line-height: 1;
+    display: none;
+  }
+  //Описание к элементу, которое слудект после этого элемента (которое в фокусе - когда по нему кликают)
+&__burger:focus + &__list{
+  display: block;
+}
+
+  &__item{
+    display: block;
+  }
+  &__link{
+    display: block;
+    padding: 10px;
+    text-align: left;
+    color: #ccc;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+}
+
+
 
 
 .form{
-  width: 100%;
-  max-width: 300px;
   margin: auto auto 20px auto;
   padding: 20px;
   border: 1px solid #ccc;
@@ -137,6 +194,7 @@ text-align: right;
   }
   &__label{}
   &__control:extend(.button){
+    cursor: text;
     background-color: #fff;
     border-color: #ccc;
     width: 100%;
